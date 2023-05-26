@@ -9,6 +9,28 @@ post:
         View input reflects the criteria model of the public API.
 
         Refer to [Search Criteria Reference](/en/latest/search/criteria_reference/search_criteria_reference/)
+    queryParameters:
+        filter:
+            type: string
+            description: |
+                An array-shaped string representing filtering Criterion. Supported Criteria:
+                | Criterion | Example |
+                | --------- | ------- |
+                | Creation date | `filter[DateMetadataCriterion][Target]=created&filter[DateMetadataCriterion][Value]=1679493636&filter[DateMetadataCriterion][Operator]=gte` |
+                | Updated date | `filter[DateMetadataCriterion][Target]=modified&filter[DateMetadataCriterion][Value]=1679493636&filter[DateMetadataCriterion][Operator]=gte` |
+                | Content Type Identifier | `filter[ContentTypeIdentifierCriterion][operator]=contains&filter[ContentTypeIdentifierCriterion][value]=image` |
+                | Section Identifier | `filter[SectionIdentifierCriterion][name]=sales_rep&filter[SectionIdentifierCriterion][operator]=eq&filter[Field][value]=media` |
+                | Parent Location Id| `filter[ParentLocationIdCriterion][name]=LocationId&filter[ParentLocationIdCriterion][operator]=eq&filter[Field][value]=2` |
+
+        sort:
+            type: string
+            description: |
+                An array-shaped string representing sorting clauses. Supported Clauses:
+                | Clause | Example |
+                | ------ | ------- |
+                | By Content name | `sort[ContentName]=ascending` |
+                | By publication date | `sort[DatePublished]=descending` |
+                | By modification date | `sort[DateModified]=ascending` |
     headers:
         Accept:
             description: The view in XML or JSON format.
